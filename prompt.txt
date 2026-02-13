@@ -1,0 +1,60 @@
+Ti si senior frontend developer. Napravi potpunu, gotovu, statičku web stranicu (single-page app) u 3 datoteke: index.html, styles.css i app.js. Bez backend-a. Bez vanjskih biblioteka (osim ako je baš nužno, ali preferiram bez).
+
+VRATI KOMPLETAN SADRŽAJ SVA 3 FAJLA U ODVOJENIM CODE BLOCKOVIMA.
+
+SPECIFIKACIJA:
+
+0) STRUKTURA/ASSETI:
+- Pretpostavi da postoje asseti:
+  - centralna slika: ./assets/center.jpg
+  - audio: ./assets/romantic.mp3
+- Dodaj konfiguraciju na vrhu app.js:
+  questionText, yesText, noText, imagePath,
+  particleRate, maxParticles,
+  soundDefaultOn (false), audioPath, audioVolume,
+  confettiCount, confettiDurationMs
+
+1) SCREEN 1:
+- Fullscreen centriran sadržaj s tekstom pitanja: "Be my valentine?"
+- Ispod su dva gumba u jednom redu: "DA" i "NE" (na mobu može u kolonu).
+- Gumb "DA" stalno pulsira (scale up/down) kao da "kuca" (normalan oblik gumba, nije srce).
+- Gumb "NE" bježi od pokazivača/prsta:
+  - Kad je pointer unutar npr. 120px od centra gumba, gumb se pomakne tako da bude minimalno ~160px od pointera, u smjeru od pointera.
+  - Gumb "NE" mora ostati unutar viewporta (clamp s paddingom).
+  - Ako zapne uz rub ili ostane preblizu pointeru, promijeni smjer (rotacija kuta / random jitter) s nekoliko pokušaja dok ne nađe valjanu poziciju.
+  - Podrži i mobilne uređaje: koristi pointermove (i fallback touchmove ako treba) da "NE" bježi i od prsta.
+  - Opcionalno: i na pointerdown na NE odmah odskoči (da se spriječi tap).
+
+- Dodaj "Sound" toggle gumb (npr. gore desno) s prikazom stanja ON/OFF (ili 🔇/🔊).
+  - Default sound je OFF (soundDefaultOn = false).
+  - Klik na toggle samo mijenja stanje (ne pokreće audio odmah).
+
+2) KLIK NA "DA":
+- Na klik:
+  A) Konfeti burst IZ POZICIJE "DA" GUMBA (bez emoji):
+     - kratko (npr. 600–900ms), čestice su mali oblici (kvadrati/pravokutnici/krugovi).
+     - čestice izlete iz centra gumba u random smjerovima (konus prema gore + bočni drift), s fade-out.
+     - implementiraj kao canvas overlay (preporučeno) ili DOM čestice, ali mora biti performantno i mora se očistiti nakon završetka.
+     - konfeti mora startati iz centra DA gumba (koordinate iz getBoundingClientRect) i canvas mora imati pointer-events:none.
+  B) Ako je sound uključen:
+     - pokreni audio (audioPath) odmah nakon klika (user gesture) i postavi volume (audioVolume).
+     - mora biti robustno: try/catch, bez pucanja ako browser blokira ili faila.
+  C) Napravi elegantan prijelaz:
+     - Screen 1 fade out, Screen 2 fade in
+     - možeš ubaciti kratki delay (npr. 200–400ms) da se konfeti vidi.
+
+3) SCREEN 2:
+- Fullscreen animacija mnogo emoji-ja: srca (❤️) i tulipani (🌷).
+  - Neka elementi padaju/plutaju s random pozicijama, veličinama i brzinama.
+  - Koristi particleRate i maxParticles; briši elemente nakon animacije.
+- U centru Screen 2 prikaži malu sliku (imagePath) u “card” okviru s border radius + shadow.
+  - Dodaj laganu scale-in animaciju kad se pojavi.
+
+4) DIZAJN:
+- Romantičan i čist: pastel pozadina (svijetli gradient), čitka tipografija, lijepo stilizirani gumbi.
+- Kod uredan, komentiran i robustan (bez konzolnih errora).
+
+NAPOMENE:
+- Ne koristi vanjske biblioteke.
+- Koristi pointer events da radi i na desktopu i na mobitelu.
+- Ograniči broj čestica/elemenata radi performansi i ukloni ih nakon animacija.

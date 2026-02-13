@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Confetti Canvas Overlay -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Sound Toggle Button -->
+    <button id="soundToggle" class="sound-toggle" aria-label="Toggle sound">
+        <span id="soundIcon">🔇</span>
+    </button>
+
+    <!-- Screen 1: Question + Buttons -->
+    <div id="screen1" class="screen screen1">
+        <div class="content">
+            <div class="question-frame">
+                <div class="hearts-around">
+                    <span class="heart">🤍</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">🌷</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">🤍</span>
+                </div>
+                <h1 id="questionText" class="question">Be my valentine?</h1>
+                <div class="hearts-around">
+                    <span class="heart">🤍</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">🌷</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">🤍</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="yesBtn" class="btn btn-yes">DA</button>
+                <button id="noBtn" class="btn btn-no">NE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Celebration -->
+    <div id="screen2" class="screen screen2 hidden">
+        <div id="particlesContainer" class="particles-container"></div>
+        <div class="content">
+            <div class="card">
+                <img id="centerImage" src="./assets/center.jpg" alt="Valentine" class="center-image">
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

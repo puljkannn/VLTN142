@@ -1,0 +1,328 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Pastel Gradient Background */
+body {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ee9ca7 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Confetti Canvas Overlay */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Sound Toggle Button */
+.sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 182, 193, 0.6);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sound-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sound-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Screen Container */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+
+/* Screen 1 Styles */
+.screen1 .content {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Question Frame */
+.question-frame {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ee9ca7 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    border-radius: 20px;
+    padding: 30px 50px;
+    display: inline-block;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 40px;
+}
+
+.hearts-around {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.heart {
+    font-size: 24px;
+    animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+.heart:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.heart:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.question {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    white-space: pre-line;
+    color: #d63384;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Base Button Styles */
+.btn {
+    padding: 15px 50px;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* YES Button - Pulsing Animation */
+.btn-yes {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    color: white;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.btn-yes:hover {
+    background: linear-gradient(135deg, #ff5252, #e04848);
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 6px 25px rgba(255, 107, 107, 0.6);
+    }
+}
+
+/* NO Button */
+.btn-no {
+    background: linear-gradient(135deg, #a8a8a8, #888888);
+    color: white;
+    position: relative;
+    transition: transform 0.15s ease-out;
+}
+
+.btn-no:hover {
+    background: linear-gradient(135deg, #999999, #777777);
+}
+
+/* Screen 2 Styles */
+.screen2 {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ee9ca7 100%);
+}
+
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    font-size: 24px;
+    animation: floatParticle linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatParticle {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Card with Image */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: cardScaleIn 0.8s ease-out;
+    z-index: 10;
+}
+
+@keyframes cardScaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.center-image {
+    width: clamp(180px, 40vw, 260px);
+    height: clamp(180px, 40vw, 260px);
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+/* Fallback for image error */
+.center-image.error {
+    display: none;
+}
+
+.card .fallback {
+    width: clamp(180px, 40vw, 260px);
+    height: clamp(180px, 40vw, 260px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    border-radius: 15px;
+    color: #d63384;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .buttons {
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+
+    .sound-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .question {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .question {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
