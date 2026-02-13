@@ -2,7 +2,7 @@
 // CONFIGURATION
 // ============================================
 const CONFIG = {
-    questionText: "Luco Lukic Otona Ivekovica 66 31400 Đakovo,\n budi \"my valentine\"?",
+    questionText: "Luco Lukic Otona Ivekovica 66 31400 Đakovo \n broj osobne iskaznice 117246302,\n budi \"my valentine\"?",
     yesText: "DA",
     noText: "NE",
     imagePath: "./assets/center.jpg",
